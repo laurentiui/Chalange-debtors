@@ -14,7 +14,7 @@ namespace Data.Repository
         {
         }
 
-        DbSet<Debtors> Debtors { get; set; }
+        DbSet<Debtor> Debtors { get; set; }
         //DbSet<User> Users { get; set; }
         //DbSet<Weather> Weathers { get; set; }
 

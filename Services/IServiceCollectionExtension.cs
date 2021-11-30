@@ -15,6 +15,7 @@ namespace Services
         {
             services.AddScoped<IWeatherService, WeatherService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IDebtorsService, DebtorsService>();
 
             return services;
         }

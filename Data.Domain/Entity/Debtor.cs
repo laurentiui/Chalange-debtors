@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Data.Domain.Entity
 {
-    public class Debtors : BaseEntity
+    public class Debtor : BaseEntity
     {
         public int Number { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
     }
 }
