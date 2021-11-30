@@ -12,6 +12,8 @@
 /Data.Domain/obj/
 /Data.Migrations.Postgres/bin/
 /Data.Migrations.Postgres/obj/
+/Data.Migrations.MsSql/bin/
+/Data.Migrations.MsSql/obj/
 /Data.Repository/bin/
 /Data.Repository/obj/
 /Utilities/bin/
