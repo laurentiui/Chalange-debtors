@@ -37,14 +37,19 @@ namespace Tests.IntegrationTests
 
                 var config = InitConfiguration();
 
-                services.AddDbContext<AppDbContext>(opt =>
-                {
-                    opt.UseNpgsql(config.GetConnectionString("Default"),
-                        o => o.MigrationsAssembly("Data.Migrations.Postgres"));
+                //services.AddDbContext<AppDbContext>(opt =>
+                //{
+                //    opt.UseNpgsql(config.GetConnectionString("Default"),
+                //        o => o.MigrationsAssembly("Data.Migrations.Postgres"));
+                //        //opt.EnableSensitiveDataLogging(); // Do not remove from comment - uncomment it for debuging.
+                //    }
+                //, ServiceLifetime.Transient);
+                services.AddDbContext<AppDbContext>(opt => {
+                    opt.UseSqlServer(config.GetConnectionString("MSSql"),
+                            o => o.MigrationsAssembly("Data.Migrations.MsSql"));
                     //opt.EnableSensitiveDataLogging(); // Do not remove from comment - uncomment it for debuging.
-                    //opt.data
                 }
-                    , ServiceLifetime.Transient);
+            , ServiceLifetime.Transient);
 
                 var sp = services.BuildServiceProvider();
 

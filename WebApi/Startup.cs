@@ -53,22 +53,13 @@ namespace WebApi
 
         protected virtual void ConfigureDatabase(IServiceCollection services)
         {
-            //services
-            //    .AddEntityFrameworkNpgsql()
-            //    .AddDbContext<AppDbContext>(opt =>
-            //    {
-            //        opt.UseNpgsql(Configuration.GetConnectionString("Default"),
-            //            o => o.MigrationsAssembly("Data.Migrations.Postgres"));
-            //        //opt.EnableSensitiveDataLogging(); // Do not remove from comment - uncomment it for debuging.
-            //    }
-            //        , ServiceLifetime.Transient);
             services
                 .AddDbContext<AppDbContext>(opt => {
                     opt.UseSqlServer(Configuration.GetConnectionString("MSSql"),
                             o => o.MigrationsAssembly("Data.Migrations.MsSql"));
                 //opt.EnableSensitiveDataLogging(); // Do not remove from comment - uncomment it for debuging.
             }
-                    , ServiceLifetime.Transient);
+            , ServiceLifetime.Transient);
         }
 
         protected virtual void ConfigureAuthentification(IServiceCollection services)
