@@ -57,5 +57,9 @@ namespace Tests.UnitTests.Mocks
                 _list.Remove(entity);
             });
         }
+
+        public async Task ClearAll() {
+            _list.Clear();
+        }
     }
 }

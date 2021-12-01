@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace Tests.UnitTests.Mocks
 {
-    public class DebtorRepositoryMock : BaseRepositoryMock<Debtor>, IDebtorsRepository
-    {
-        
+    public class DebtorRepositoryMock : BaseRepositoryMock<Debtor>, IDebtorsRepository, IDebtorsRepositoryMock {
+        //public async Task ClearAll() {
+        //    throw new NotImplementedException();
+        //}
     }
 }

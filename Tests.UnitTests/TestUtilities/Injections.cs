@@ -14,7 +14,7 @@ namespace Tests.UnitTests.TestUtilities
     {
         public IUserRepository userRepository;
         public IWeatherRepository weatherRepository;
-        public IDebtorsRepository debtorsRepository;
+        public IDebtorsRepositoryMock debtorsRepository;
 
         public IUserService userService;
         public IWeatherService weatherService;

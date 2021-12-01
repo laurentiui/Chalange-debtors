@@ -30,6 +30,13 @@ namespace Services.Implementations
             return entity;
         }
 
+        public async Task<Debtor> Close(Debtor entity) {
+            entity.IsClosed = true;
+
+            entity = await _debtorsRepository.Update(entity);
+            return entity;
+        }
+
         public async Task<DebtorSync> GetListsForUpdateData(IList<Debtor> debtorsToImport) {
             var debtorsExisting = await _debtorsRepository.ListAll();
 
@@ -97,7 +104,7 @@ namespace Services.Implementations
 
             //close
             foreach (var debtor in debtorSync.ListToClose) {
-                await this.Update(debtor);
+                await this.Close(debtor);
             }
 
             var newList = await this.ListAll();

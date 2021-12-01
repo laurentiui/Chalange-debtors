@@ -8,6 +8,5 @@ using System.Threading.Tasks;
 namespace Data.Repository.Interfaces
 {
     public interface IDebtorsRepository : IBaseRepository<Debtor> {
-        //Task<IList<Debtor>> ListAll();
     }
 }
