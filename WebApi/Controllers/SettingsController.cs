@@ -13,10 +13,10 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class SettingsController : ControllerBase
     {
-        private readonly ILogger<AccountController> _logger;
+        private readonly ILogger<SettingsController> _logger;
         private readonly IConfiguration _config;
 
-        public SettingsController(ILogger<AccountController> logger, IConfiguration config)
+        public SettingsController(ILogger<SettingsController> logger, IConfiguration config)
         {
             _logger = logger;
             _config = config;

@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Domain", "Data.Domain\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.IntegrationTests", "Tests.IntegrationTests\Tests.IntegrationTests.csproj", "{DA6B394A-539C-4709-8BD9-863504FFCE45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Migrations.Postgres", "Data.Migrations.Postgres\Data.Migrations.Postgres.csproj", "{3E4DAD73-B5AC-4E1A-B8BB-A27E4DEC976E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.UnitTests", "Tests.UnitTests\Tests.UnitTests.csproj", "{19913BCE-C3B0-403A-9F03-48A2F1536B05}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Repository", "Data.Repository\Data.Repository.csproj", "{9B7EBECA-38B1-4EE9-A1CA-78E4422173D7}"
@@ -66,10 +64,6 @@ Global
 		{DA6B394A-539C-4709-8BD9-863504FFCE45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA6B394A-539C-4709-8BD9-863504FFCE45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA6B394A-539C-4709-8BD9-863504FFCE45}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E4DAD73-B5AC-4E1A-B8BB-A27E4DEC976E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E4DAD73-B5AC-4E1A-B8BB-A27E4DEC976E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E4DAD73-B5AC-4E1A-B8BB-A27E4DEC976E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E4DAD73-B5AC-4E1A-B8BB-A27E4DEC976E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19913BCE-C3B0-403A-9F03-48A2F1536B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19913BCE-C3B0-403A-9F03-48A2F1536B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19913BCE-C3B0-403A-9F03-48A2F1536B05}.Release|Any CPU.ActiveCfg = Release|Any CPU

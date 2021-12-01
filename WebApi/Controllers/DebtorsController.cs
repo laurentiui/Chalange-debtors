@@ -16,10 +16,10 @@ namespace WebApi.Controllers
     [ApiController]
     [Route("[controller]")]
     public class DebtorsController : ControllerBase {
-        private readonly ILogger<AccountController> _logger;
+        private readonly ILogger<DebtorsController> _logger;
         private readonly IDebtorsService _debtorsService;
 
-        public DebtorsController(ILogger<AccountController> logger, IDebtorsService debtorsService) {
+        public DebtorsController(ILogger<DebtorsController> logger, IDebtorsService debtorsService) {
             _logger = logger;
             _debtorsService = debtorsService;
         }
