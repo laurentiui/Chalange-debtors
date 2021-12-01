@@ -36,6 +36,24 @@ namespace Tests.UnitTests
                 await debtorRepository.Insert(new Debtor() {
                     Id = 20,
                     //Number = 10,
+                    Name = "Name 20 - we expect to close this",
+                    Email = "name20@test.com",
+                    Mobile = "1234",
+                    Telephone = "5678",
+                    IsClosed = false
+                });
+                await debtorRepository.Insert(new Debtor() {
+                    Id = 100,
+                    //Number = 10,
+                    Name = "Name 10",
+                    Email = "name10@test.com",
+                    Mobile = "1234",
+                    Telephone = "5678",
+                    IsClosed = true
+                });
+                await debtorRepository.Insert(new Debtor() {
+                    Id = 101,
+                    //Number = 10,
                     Name = "Name 10",
                     Email = "name10@test.com",
                     Mobile = "1234",
@@ -59,11 +77,138 @@ namespace Tests.UnitTests
         public async Task Test_CanNotUpdateAClosedEntity() {
             var ex = Assert.ThrowsAsync<DebtorEntityException>(async () => await
                 _debtorsService.Update(new Debtor() {
-                    Id = 20,
+                    Id = 100,
                     Name = "new name"
                 }));
             Assert.AreEqual("can not update a closed entity", ex.Message);
 
+        }
+
+        [Test]
+        public async Task GetListsForUpdateData_ShouldHave2Invalid() {
+            var importList = new List<Debtor>() {
+                new Debtor() {
+                    Id = 100,
+                    Name = "dummy"
+                },
+                new Debtor() {
+                    Id = 101,
+                    Name = "dummy"
+                }
+            };
+            var listsForUpdateData = await _debtorsService.GetListsForUpdateData(importList);
+
+            Assert.AreEqual(2, listsForUpdateData.ListInvalid.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToIgnore.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToAdd.Count);
+            //because we omitted the one with id=10
+            Assert.AreEqual(2, listsForUpdateData.ListToClose.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToUpdate.Count);
+
+        }
+        [Test]
+        public async Task GetListsForUpdateData_ShouldHave2ToIgnore() {
+            var importList = new List<Debtor>() {
+                new Debtor() {
+                    Id = 10,
+                    //Number = 10,
+                    Name = "Name 10",
+                    Email = "name10@test.com",
+                    Mobile = "1234",
+                    Telephone = "5678"
+                },
+                new Debtor() {
+                    Id = 20,
+                    //Number = 10,
+                    Name = "Name 20 - we expect to close this",
+                    Email = "name20@test.com",
+                    Mobile = "1234",
+                    Telephone = "5678",
+                    IsClosed = false
+                }
+            };
+            var listsForUpdateData = await _debtorsService.GetListsForUpdateData(importList);
+
+            Assert.AreEqual(0, listsForUpdateData.ListInvalid.Count);
+            Assert.AreEqual(2, listsForUpdateData.ListToIgnore.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToAdd.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToClose.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToUpdate.Count);
+
+        }
+
+        [Test]
+        public async Task GetListsForUpdateData_ShouldHave1ToAdd() {
+            var importList = new List<Debtor>() {
+                new Debtor() {
+                    Id = 200,
+                    Name = "Name 200",
+                    Email = "name20@test.com",
+                    Mobile = "1234",
+                    Telephone = "5678"
+                }
+            };
+            var listsForUpdateData = await _debtorsService.GetListsForUpdateData(importList);
+
+            Assert.AreEqual(0, listsForUpdateData.ListInvalid.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToIgnore.Count);
+            Assert.AreEqual(1, listsForUpdateData.ListToAdd.Count);
+            //because we omitted the one with id=10 and 20
+            Assert.AreEqual(2, listsForUpdateData.ListToClose.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToUpdate.Count);
+
+        }
+
+        [Test]
+        public async Task GetListsForUpdateData_ShouldHave1ToClose() {
+            var importList = new List<Debtor>() {};
+            var listsForUpdateData = await _debtorsService.GetListsForUpdateData(importList);
+
+            Assert.AreEqual(0, listsForUpdateData.ListInvalid.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToIgnore.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToAdd.Count);
+            //because we omitted the one with id=10 and 20
+            Assert.AreEqual(2, listsForUpdateData.ListToClose.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToUpdate.Count);
+
+        }
+
+        [Test]
+        public async Task GetListsForUpdateData_ShouldHave1ToUpdate_Name() {
+            var importList = new List<Debtor>() {
+                new Debtor() {
+                    Id = 10,
+                    //Number = 10,
+                    Name = "Name 10-changed prop",
+                    Email = "name10@test.com",
+                    Mobile = "1234",
+                    Telephone = "5678"
+                }
+            };
+            var listsForUpdateData = await _debtorsService.GetListsForUpdateData(importList);
+
+            Assert.AreEqual(0, listsForUpdateData.ListInvalid.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToIgnore.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToAdd.Count);
+            Assert.AreEqual(1, listsForUpdateData.ListToClose.Count);
+            Assert.AreEqual(1, listsForUpdateData.ListToUpdate.Count);
+        }
+        [Test]
+        public async Task GetListsForUpdateData_ShouldHave1ToUpdate_MissingProps() {
+            var importList = new List<Debtor>() {
+                new Debtor() {
+                    Id = 10,
+                    //Number = 10,
+                    Name = "Name 10",
+                }
+            };
+            var listsForUpdateData = await _debtorsService.GetListsForUpdateData(importList);
+
+            Assert.AreEqual(0, listsForUpdateData.ListInvalid.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToIgnore.Count);
+            Assert.AreEqual(0, listsForUpdateData.ListToAdd.Count);
+            Assert.AreEqual(1, listsForUpdateData.ListToClose.Count);
+            Assert.AreEqual(1, listsForUpdateData.ListToUpdate.Count);
         }
     }
 }

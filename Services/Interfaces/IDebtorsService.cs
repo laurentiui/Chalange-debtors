@@ -9,6 +9,6 @@ namespace Services.Interfaces
 {
     public interface IDebtorsService : IBaseService<Debtor>
     {
-        //Task<IList<Debtor>> ListAll();
+        Task<DebtorSync> GetListsForUpdateData(IList<Debtor> debtorsToImport);
     }
 }

@@ -17,6 +17,16 @@ namespace Data.Domain.Entity
         public string Mobile { get; set; }
         public string Email { get; set; }
         public bool IsClosed { get; set; }
+
+        public bool Compare(Debtor anotherEntity) {
+            //we do not consider here the IsClosed - because it has nothing to do with the debtors info regaring this particular sync
+            return
+                this.Id == anotherEntity.Id
+                && this.Name == anotherEntity.Name
+                && this.Telephone == anotherEntity.Telephone
+                && this.Mobile == anotherEntity.Mobile
+                && this.Email == anotherEntity.Email;
+        }
     }
 
 }
