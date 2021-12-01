@@ -27,6 +27,10 @@ namespace WebApi.Controllers
 
         [HttpGet("list")]
         public async Task<ActionResult<IList<Debtor>>> List() {
+            //await _debtorsService.Insert(new Debtor() {
+            //    Id = 2,
+            //    Name = "ceva"
+            //});
             var list = await _debtorsService.ListAll();
             return Ok(list);
         }

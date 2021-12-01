@@ -14,9 +14,5 @@ namespace Data.Repository.Implementations {
             _appDbContext = appDbContext;
         }
 
-        public async Task<IList<Debtor>> ListAll() {
-            var list = _appDbContext.Set<Debtor>().ToList();
-            return list;
-        }
     }
 }

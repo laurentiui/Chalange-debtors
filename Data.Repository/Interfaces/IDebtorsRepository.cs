@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repository.Interfaces
 {
-    public interface IDebtorsRepository
-    {
-        Task<IList<Debtor>> ListAll();
+    public interface IDebtorsRepository : IBaseRepository<Debtor> {
+        //Task<IList<Debtor>> ListAll();
     }
 }

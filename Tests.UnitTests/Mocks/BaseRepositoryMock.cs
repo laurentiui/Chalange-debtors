@@ -11,7 +11,7 @@ namespace Tests.UnitTests.Mocks
     public class BaseRepositoryMock<T> : IBaseRepository<T>
         where T : BaseEntity
     {
-        protected List<T> _list;
+        public List<T> _list;
 
         public BaseRepositoryMock()
         {
@@ -31,6 +31,10 @@ namespace Tests.UnitTests.Mocks
         {
             return await Task.Run(() =>
             {
+                //to mock the "key" error
+                if (_list.Any(item => item.Id == newEntity.Id)) {
+                    throw new Exception("Cannot insert explicit value for identity column");
+                }
                 _list.Add(newEntity);
                 return newEntity;
             });

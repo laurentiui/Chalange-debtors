@@ -9,6 +9,10 @@ namespace Tests.IntegrationTests
 {
     public class SettingsIntegrationTest : IClassFixture<CustomWebApplicationFactory<WebApi.Startup>>
     {
+        // Uncomment to disable tests
+        private class FactAttribute : Attribute { }
+
+
         private readonly CustomWebApplicationFactory<WebApi.Startup> _factory;
 
         public SettingsIntegrationTest(CustomWebApplicationFactory<WebApi.Startup> factory)

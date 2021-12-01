@@ -14,6 +14,9 @@ namespace Tests.IntegrationTests
     public class UserIntegrationTest
         : IClassFixture<CustomWebApplicationFactory<WebApi.Startup>>
     {
+        // Uncomment to disable tests
+        private class FactAttribute : Attribute { }
+
         private readonly CustomWebApplicationFactory<WebApi.Startup> _factory;
 
         public UserIntegrationTest(CustomWebApplicationFactory<WebApi.Startup> factory)

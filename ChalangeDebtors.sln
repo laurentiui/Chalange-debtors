@@ -39,6 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_documents", "_documents", 
 		_documents\Debtors_2.xml = _documents\Debtors_2.xml
 		_documents\Debtors_3.xml = _documents\Debtors_3.xml
 		_documents\Debtors_4.xml = _documents\Debtors_4.xml
+		_documents\readme..md = _documents\readme..md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Migrations.MsSql", "Data.Migrations.MsSql\Data.Migrations.MsSql.csproj", "{9CFAEA31-9D3F-473D-8BF3-EC3A9924A4A8}"

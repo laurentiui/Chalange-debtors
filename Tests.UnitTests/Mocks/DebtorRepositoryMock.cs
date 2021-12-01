@@ -1,14 +1,15 @@
 ﻿using Data.Domain.Entity;
+using Data.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.Interfaces
+namespace Tests.UnitTests.Mocks
 {
-    public interface IDebtorsService : IBaseService<Debtor>
+    public class DebtorRepositoryMock : BaseRepositoryMock<Debtor>, IDebtorsRepository
     {
-        //Task<IList<Debtor>> ListAll();
+        
     }
 }

@@ -9,8 +9,8 @@ namespace Data.Domain.Entity
 {
     public class Debtor : BaseEntity
     {
-        [Required]
-        public int Number { get; set; }
+        //[Key]
+        //public int Number { get; set; }
         [Required]
         public string Name { get; set; }
         public string Telephone { get; set; }

@@ -17,6 +17,9 @@ namespace Tests.IntegrationTests
     public class WeatherIntegrationTest
         : IClassFixture<CustomWebApplicationFactory<WebApi.Startup>>
     {
+        // Uncomment to disable tests
+        private class FactAttribute : Attribute { }
+
         private readonly CustomWebApplicationFactory<WebApi.Startup> _factory;
 
         public WeatherIntegrationTest(CustomWebApplicationFactory<WebApi.Startup> factory)
